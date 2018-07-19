@@ -1,5 +1,5 @@
 # OweSum - Automate your debt settlements
-> Beware of little expenses; a small leak will sink a great ship - by Benjamin Franklin
+> Beware of little expenses; a small leak will sink a great ship -  Benjamin Franklin
 
 OweSum (Pronounced "Awesome") is a small Microservices based App that helps users/groups in managing their expenses, debts and its recovery.
 
@@ -170,6 +170,6 @@ Ex. http://localhost:7777/payments/PA_v9R3uY_ET1q81AAeBbq9_w
 
 
 # Acknowledgements
-Thanks to the Open source contributors for making lovely frameworks for larger Softare engineers fraternity.
+Thanks to the Open source contributors for making lovely frameworks for larger Software engineers fraternity.
 
 
