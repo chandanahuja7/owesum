@@ -1,0 +1,28 @@
+Techstack for OweSum - Along with the rationale as to why it was chosen.
+
+Java 8+ : Latest features, foreach, Lambda 
+
+Spring Boot : 
+	Quick bootstrapping, Out of the box features for concerns like Logging, App-Configuration, Health , Monitoring, Cloud support etc
+
+PostgreSQL DB 9.6 +  : Open Source, best of breed, with JSONB type provides best of both RDBMS as well as NoSQL world.
+
+Apring MVC : Easy to implement REST support with annotations.
+
+
+Spring JDBC : Very light weight , more control to developers, performant , wanted to avoid ORM's as it might not be very performant.
+
+Faster Jackson: JSON binding
+
+Log4J : Logging 
+
+
+
+
+
+
+
+
+
+
+
