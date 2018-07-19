@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<Configuration status="warn"    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+	<Properties>
+		<Property name="basePath">c:/var/log/owesum/report/</Property>
+		<Property name="PID">????</Property>
+		<Property name="LOG_EXCEPTION_CONVERSION_WORD">%xwEx</Property>
+		<Property name="LOG_LEVEL_PATTERN">%5p</Property>
+		<Property name="LOG_DATEFORMAT_PATTERN">yyyy-MM-dd HH:mm:ss.SSS</Property>
+		<Property name="CONSOLE_LOG_PATTERN">%clr{%d{${LOG_DATEFORMAT_PATTERN}}}{faint} %clr{${LOG_LEVEL_PATTERN}} %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}</Property>
+		<Property name="FILE_LOG_PATTERN">%d{${LOG_DATEFORMAT_PATTERN}} ${LOG_LEVEL_PATTERN} ${sys:PID} --- [%t] %-40.40c{1.} : %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}</Property>
+		
+		
+		
+	</Properties>
+	<Appenders>
+		<RollingFile name="fileLogger" fileName="${basePath}/report_uatref.log" filePattern="${basePath}/report_uatref-%d{yyyy-MM-dd}.log">
+ 			<PatternLayout>
+				<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %c{1} - %msg%n</pattern>
+ 				<!-- <pattern>${sys:FILE_LOG_PATTERN}</pattern> -->
+ 		</PatternLayout>
+ 
+<!--               <JSONLayout complete="true" compact="false"/>
+ --> 
+ 
+ 
+ 			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+			</Policies>
+		</RollingFile>
+
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout	pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} %c{1} - %msg%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.chandan.owesum" level="warn" additivity="true">
+			<appender-ref ref="fileLogger" level="warn" />
+		</Logger>
+		<Root level="warn" additivity="false">
+			<appender-ref ref="console" />
+		</Root>
+	</Loggers>
+ 
+ </Configuration>
