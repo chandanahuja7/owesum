@@ -37,5 +37,13 @@ public class OweSumEventReport {
 	
 	
 	
+	@Override
+	public String toString() {
+		return "OweSumEventReport [event=" + event + ", owesumDetailsSet=" + owesumDetailsSet
+				+ ", suggestedPaymentsSet=" + suggestedPaymentsSet + "]";
+	}
+	
+	
+	
 	
 }

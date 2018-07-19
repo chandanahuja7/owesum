@@ -88,6 +88,13 @@ public class Payment
         this.paymentBeneficiaries = paymentBeneficiaries;
     }
 
+	@Override
+	public String toString() {
+		return "Payment [paymentId=" + paymentId + ", eventId=" + eventId + ", purposeTpCd=" + purposeTpCd
+				+ ", description=" + description + ", paidByPartyId=" + paidByPartyId + ", paymentDate=" + paymentDate
+				+ ", paymentAmount=" + paymentAmount + ", paymentBeneficiaries=" + paymentBeneficiaries + "]";
+	}
+
 
 
 

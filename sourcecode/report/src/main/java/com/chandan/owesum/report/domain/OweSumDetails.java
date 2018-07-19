@@ -76,6 +76,14 @@ public class OweSumDetails {
 	
 	
 	
+	@Override
+	public String toString() {
+		return "OweSumDetails [party=" + party + ", totalSpent=" + totalSpent + ", isOwed=" + isOwed + ", owes=" + owes
+				+ ", balance=" + balance + ", runningBalance=" + runningBalance + "]";
+	}
+	
+	
+	
 	
 	
 	
