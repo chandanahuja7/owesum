@@ -7,7 +7,7 @@ Spring Boot :
 
 PostgreSQL DB 9.6 +  : Open Source, best of breed, with JSONB type provides best of both RDBMS as well as NoSQL world.
 
-Apring MVC : Easy to implement REST support with annotations.
+Spring MVC : Easy to implement REST support with annotations.
 
 
 Spring JDBC : Very light weight , more control to developers, performant , wanted to avoid ORM's as it might not be very performant.
