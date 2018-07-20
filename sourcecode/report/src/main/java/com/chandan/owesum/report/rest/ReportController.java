@@ -34,12 +34,9 @@ public class ReportController {
 		OweSumEventReport oweSumEventReport = reportService.getReport(eventId);
 
 		if (oweSumEventReport == null)
-			//throw new StudentNotFoundException("id-" + id);
 			throw new Exception("id-" + eventId);
 
-		//PaymentMessageDto paymentMessageDto = OweSumEventReportAdapter.getPaymentDto(payment);
-
-		
+	
 		return new ResponseEntity<>(oweSumEventReport, HttpStatus.OK);
 	}
 
