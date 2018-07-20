@@ -63,28 +63,32 @@ public class PaymentRecommender {
 					// if debtor value is less than equal to creditor 					
 					if(compareToValue <= 0 )
 					{
-						// pay to current Creditor entire amount which debtor need to pay
+						// Need to Pay pay to current Creditor entire amount which debtor need to pay
 						BigDecimal suggestedAmount =  debtorOweSumDetails.runningBalance;
-						Payment suggestedPayment = buildSuggestedPayment(debtorOweSumDetails.getParty(),creditorOweSumDetails.getParty(),suggestedAmount  );
-						paymentSet.add(suggestedPayment);
-						debtorOweSumDetails.runningBalance = debtorOweSumDetails.runningBalance.subtract(suggestedAmount);
-						creditorOweSumDetails.runningBalance = creditorOweSumDetails.runningBalance.subtract(suggestedAmount);
-						break;
+						
+						
+						// pay to current Creditor entire amount which debtor need to pay
 						// reduce creditor running balance
-						// reduce debtor running balance						
+						// reduce debtor running balance		
+						processRecommendedPayment( debtorOweSumDetails,  creditorOweSumDetails,  suggestedAmount ,  paymentSet );
+						
 						// move to next debtor
+						break;
+				
 					}
 					// If creditor can be paid and the debtor has more to pay  
 					else
 					{
+						// Need to pay to current creditor the creditor running balance
 						BigDecimal suggestedAmount =  creditorOweSumDetails.runningBalance;
-						Payment suggestedPayment = buildSuggestedPayment(debtorOweSumDetails.getParty(),creditorOweSumDetails.getParty(),suggestedAmount  );
-						paymentSet.add(suggestedPayment);
-						debtorOweSumDetails.runningBalance = debtorOweSumDetails.runningBalance.subtract(suggestedAmount);
-						creditorOweSumDetails.runningBalance = creditorOweSumDetails.runningBalance.subtract(suggestedAmount);
+						
+						
 						// pay to current creditor the creditor running balance 
 						// reduce creditors running balance
-						// reduce debtor running balance						
+						// reduce debtor running balance	
+						processRecommendedPayment( debtorOweSumDetails,  creditorOweSumDetails,  suggestedAmount ,  paymentSet );
+
+					
 						// move to next creditor 
 						continue;
 					}
@@ -117,6 +121,21 @@ public class PaymentRecommender {
 		
 	}
 	
+	
+	
+	private static void processRecommendedPayment(OweSumDetails debtorOweSumDetails, OweSumDetails creditorOweSumDetails, BigDecimal suggestedAmount , Set<Payment> paymentSet )
+	{
+		Payment suggestedPayment = buildSuggestedPayment(debtorOweSumDetails.getParty(),creditorOweSumDetails.getParty(),suggestedAmount  );
+		paymentSet.add(suggestedPayment);
+		reduceRunningBalance( debtorOweSumDetails,  creditorOweSumDetails,  suggestedAmount);		
+	}
+
+	
+	private static void reduceRunningBalance(OweSumDetails debtorOweSumDetails, OweSumDetails creditorOweSumDetails, BigDecimal suggestedAmount)
+	{
+		debtorOweSumDetails.runningBalance = debtorOweSumDetails.runningBalance.subtract(suggestedAmount);
+		creditorOweSumDetails.runningBalance = creditorOweSumDetails.runningBalance.subtract(suggestedAmount);
+	}
 	
 	private static Payment buildSuggestedPayment(Party payer, Party payee, BigDecimal amount)
 	{
